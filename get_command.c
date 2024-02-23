@@ -1,0 +1,34 @@
+#include "shell.h"
+
+/**
+ * get_command - function for user to enter command
+ * @cmnd: command from user (char *)
+ * Return: command (char *)
+*/
+
+char *get_command(char *cmnd)
+{
+	ssize_t entered;
+	size_t i = 0;
+
+	entered = getline(&cmnd, &i, stdin);
+
+	/*end of file or (ctrl + D)*/
+	if (entered == EOF)
+	{
+		_printf("\n");
+		free(cmnd);
+		exit(0);
+	}
+
+	/*if user enter blank line return NULL*/
+	if (entered == 1 && cmnd[0] == '\n')
+	{
+		free(cmnd);
+		return (NULL);
+	}
+
+	cmnd[entered - 1] = '\0';
+
+	return (cmnd);
+}
