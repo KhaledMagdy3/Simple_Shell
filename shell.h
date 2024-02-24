@@ -11,9 +11,12 @@
 
 /* functions prototype */
 int _strlen(const char *str);
+char *_strcpy(char *dest, char *src);
+char *_strdub(char *src);
 void _printf(const char *str);
 void prompt_line_display(void);
 char *get_command(char *cmnd);
+char **parse_command(char *cmnd);
 
 
 #endif /* SHELL_H */
