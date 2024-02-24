@@ -12,6 +12,8 @@ int main(void)
 	while (1)
 	{
 		prompt_line_display();
-		get_command(command);
+		command = get_command(command);
+		execut_command(command);
+		free(command);
 	}
 }
