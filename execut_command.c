@@ -1,34 +1,40 @@
 #include "shell.h"
 /**
  * execut_command - execut command
- * @cmnd: command that excuted
+ * @argv: command that excuted
 */
-void execut_command(char *cmnd)
+void execut_command(char **argv)
 {
 	pid_t ch_pid;
-	char *args[2];
+	char *command = NULL;
 	int status;
 
-	/*creat a child process*/
-	ch_pid = fork();
-	if (ch_pid == -1)
+	if (argv)
 	{
-		perror("fork");
-		exit(0);
-	}
-	else if (ch_pid == 0)
-	{
-		args[0] = cmnd;
-		args[1] = NULL;
-		/*execut the command*/
-		status = execve(args[0], args, NULL);
-		if (status == -1)
+		/*creat a child process*/
+		ch_pid = fork();
+		if (ch_pid == -1)
 		{
-			perror(cmnd);
+			perror("fork");
+			exit(0);
 		}
-	}
-	else
-	{
-		wait(NULL);
+		else if (ch_pid == 0)
+		{
+			command = get_path(argv[0]);
+			/*execut the command*/
+			status = execve(command, argv, NULL);
+			if (status == -1)
+			{
+				perror(command);
+			}
+		}
+		else
+		{
+			wait(NULL);
+		}
+		free(command);
+		/*for (i = 0; argv[i] != NULL; i++)*/
+			/*free(argv[i]);*/
+		/*free(argv);*/
 	}
 }
