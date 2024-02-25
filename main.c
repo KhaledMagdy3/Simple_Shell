@@ -16,13 +16,11 @@ int main(void)
 		prompt_line_display();
 		command = get_command(command);
 		argv = parse_command(command);
-		execut_command(command);
-		free(command);
+		execut_command(argv);
+		/*free(command);*/
 	}
-
+	free(command);
 	for (i = 0; argv[i] != NULL; i++)
 		free(argv[i]);
-
 	free(argv);
-	free(command);
 }
