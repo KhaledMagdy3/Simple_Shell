@@ -16,6 +16,7 @@ int main(void)
 		prompt_line_display();
 		command = get_command(command);
 		argv = parse_command(command);
+		ex_env_handler(argv, command);
 		execut_command(argv);
 		/*free(command);*/
 	}
