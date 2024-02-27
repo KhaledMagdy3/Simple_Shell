@@ -2,21 +2,21 @@
 
 /**
  * get_command - function for user to enter command
- * @cmnd: command from user (char *)
  * Return: command (char *)
 */
 
-char *get_command(char *cmnd)
+char *get_command()
 {
+	char *cmnd;
 	ssize_t entered;
 	size_t i = 0;
 
 	entered = getline(&cmnd, &i, stdin);
 
 	/*end of file or (ctrl + D)*/
-	if (entered == EOF)
+	if (entered == -1)
 	{
-		_printf("\n");
+		/*_printf("\n");*/
 		free(cmnd);
 		exit(0);
 	}
@@ -29,6 +29,5 @@ char *get_command(char *cmnd)
 	}
 
 	cmnd[entered - 1] = '\0';
-
 	return (cmnd);
 }

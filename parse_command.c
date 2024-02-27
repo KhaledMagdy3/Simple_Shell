@@ -41,7 +41,7 @@ char **parse_command(char *cmnd)
 	}
 	argv[i] = NULL;
 	free(cmnd_cpy);
-	free(cmnd);
+	/*free(cmnd);*/
 	/*free(argv);*/
 	return (argv);
 }

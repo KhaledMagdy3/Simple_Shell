@@ -20,7 +20,7 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 void _printf(const char *str);
 void prompt_line_display(void);
-char *get_command(char *cmnd);
+char *get_command();
 char **parse_command(char *cmnd);
 int ex_env_handler(char **argv, char *command);
 void get_env(void);
