@@ -25,6 +25,7 @@ char **parse_command(char *cmnd)
 		token = strtok(NULL, delim);
 		argc++;
 	}
+	argc++;
 	argv = malloc(sizeof(char *) * argc);/*need to be free*/
 	if (argv == NULL)
 	{
