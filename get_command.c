@@ -22,13 +22,11 @@ char *get_command()
 	}
 
 	/*if user enter blank line return NULL*/
-	/*
-	if (entered == 1 && cmnd[0] == '\n')
+	/*if (entered == 1 && cmnd[0] == '\n')
 	{
 		free(cmnd);
 		return (NULL);
 	}*/
-
 	cmnd[entered - 1] = '\0';
 	return (cmnd);
 }

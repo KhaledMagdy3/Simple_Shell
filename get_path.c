@@ -12,7 +12,7 @@ char *get_path(char *cmnd)
 
 	/* check if command it self is path */
 	if (stat(cmnd, &buf) == 0)
-	{	
+	{
 		path = cmnd;
 		return (path);
 	}

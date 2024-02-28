@@ -20,13 +20,9 @@ int main(void)
 		/*ex_env_handler(argv, command);*/
 		execut_command(argv);
 		free(command);
-		/*if (argv)
-		{*/
 		for (i = 0; argv[i] != NULL; i++)
-                	free(argv[i]);
+			free(argv[i]);
 		free(argv);
-		
-
 	}
 	free(command);
 	for (i = 0; argv[i] != NULL; i++)
