@@ -7,7 +7,7 @@ void execut_command(char **argv)
 {
 	pid_t ch_pid;
 	char *command = NULL;
-	int status, i;
+	int status;
 
 	if (argv)
 	{
