@@ -26,6 +26,7 @@ int ex_env_handler(char **argv, char *command);
 void get_env(void);
 void exit_shell(char **argv, char *line);
 void execut_command(char **argv);
+char *_getenv(const char *name);
 char *get_path(char *cmnd);
 
 #endif /* SHELL_H */

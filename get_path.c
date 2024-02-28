@@ -9,25 +9,26 @@ char *get_path(char *cmnd)
 	char *path_env, *path_cpy, *token_dir, *path;
 	int len_cmnd, len_token;
 	struct stat buf;
-	char *cmnd_cpy;
 
-	cmnd_cpy = _strdub(cmnd); /*need to free*/
 	/* check if command it self is path */
-	if (stat(cmnd_cpy, &buf) == 0)
-		return (cmnd_cpy);
-	path_env = getenv("PATH"); /*get path from enviroment*/
+	if (stat(cmnd, &buf) == 0)
+	{	
+		path = cmnd;
+		return (path);
+	}
+	path_env = _getenv("PATH"); /*get path from enviroment*/
 	if (path_env)
 	{
 		path_cpy = _strdub(path_env); /*need to free*/
 		token_dir = strtok(path_cpy, ":");
-		len_cmnd = _strlen(cmnd_cpy);
+		len_cmnd = _strlen(cmnd);
 		while (token_dir)
 		{
 			len_token = _strlen(token_dir); /*length of directory*/
 			path = malloc(sizeof(char) * (len_token + len_cmnd + 2));
 			_strcpy(path, token_dir);
 			_strcat(path, "/");
-			_strcat(path, cmnd_cpy);
+			_strcat(path, cmnd);
 			_strcat(path, "\0");
 			if (stat(path, &buf) == 0)
 			{
@@ -41,7 +42,7 @@ char *get_path(char *cmnd)
 			}
 		}
 		free(path_cpy);
-		return (cmnd_cpy);
+		return (NULL);
 	}
-	return (cmnd_cpy);
+	return (NULL);
 }
