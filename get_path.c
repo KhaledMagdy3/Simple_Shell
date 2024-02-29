@@ -9,13 +9,9 @@ char *get_path(char *cmnd)
 	char *path_env, *path_cpy, *token_dir, *path;
 	int len_cmnd, len_token;
 	struct stat buf;
+	char *cmnd_cpy;
 
-	/* check if command it self is path */
-	if (stat(cmnd, &buf) == 0)
-	{
-		path = cmnd;
-		return (path);
-	}
+	cmnd_cpy = _strdub(cmnd);
 	path_env = _getenv("PATH"); /*get path from enviroment*/
 	if (path_env)
 	{
@@ -33,6 +29,7 @@ char *get_path(char *cmnd)
 			if (stat(path, &buf) == 0)
 			{
 				free(path_cpy);
+				free(cmnd_cpy);
 				return (path);
 			}
 			else
@@ -42,6 +39,9 @@ char *get_path(char *cmnd)
 			}
 		}
 		free(path_cpy);
+		if (stat(cmnd, &buf) == 0)
+			return (cmnd_cpy);
+		free(cmnd_cpy);
 		return (NULL);
 	}
 	return (NULL);

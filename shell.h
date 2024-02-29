@@ -19,6 +19,7 @@ char *_strdub(char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 void _printf(const char *str);
+char *_strtok(char *str, char *delimiters);
 void prompt_line_display(void);
 char *get_command();
 char **parse_command(char *cmnd);

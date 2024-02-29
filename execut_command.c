@@ -11,27 +11,31 @@ void execut_command(char **argv)
 
 	if (argv)
 	{
-		/*creat a child process*/
-		ch_pid = fork();
-		if (ch_pid == -1)
+		command = get_path(argv[0]);
+		if (command)
 		{
-			perror("fork");
-			exit(0);
-		}
-		else if (ch_pid == 0)
-		{
-			command = get_path(argv[0]);
-			/*execut the command*/
-			status = execve(command, argv, NULL);
-			if (status == -1)
+			/*creat a child process*/
+			ch_pid = fork();
+			if (ch_pid == -1)
 			{
-				perror(command);
+				perror("fork");
+				exit(0);
 			}
-			free(command);
+			else if (ch_pid == 0)
+			{
+				/*execut the command*/
+				status = execve(command, argv, NULL);
+				if (status == -1)
+				{
+					perror(command);
+				}
+			}
+			else
+			{
+				wait(NULL);
+			}
 		}
-		else
-		{
-			wait(NULL);
-		}
+		free(command);
+		/*perror(command);*/
 	}
 }

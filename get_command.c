@@ -7,7 +7,7 @@
 
 char *get_command()
 {
-	char *cmnd;
+	char *cmnd = NULL;
 	ssize_t entered;
 	size_t i = 0;
 
@@ -22,11 +22,11 @@ char *get_command()
 	}
 
 	/*if user enter blank line return NULL*/
-	/*if (entered == 1 && cmnd[0] == '\n')
+	if (entered == 1 && cmnd[0] == '\n')
 	{
 		free(cmnd);
 		return (NULL);
-	}*/
+	}
 	cmnd[entered - 1] = '\0';
 	return (cmnd);
 }

@@ -22,9 +22,10 @@ char **parse_command(char *cmnd)
 	token = strtok(cmnd_cpy, delim);
 	while (token != NULL)
 	{
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		argc++;
 	}
+	argc++;
 	argv = malloc(sizeof(char *) * argc);/*need to be free*/
 	if (argv == NULL)
 	{

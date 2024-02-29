@@ -9,7 +9,7 @@ int main(void)
 {
 	char *command = NULL;
 	char **argv = NULL;
-	int i;
+	int i, st;
 
 	while (1)
 	{
@@ -17,12 +17,16 @@ int main(void)
 			prompt_line_display();
 		command = get_command();
 		argv = parse_command(command);
-		/*ex_env_handler(argv, command);*/
-		execut_command(argv);
-		free(command);
-		for (i = 0; argv[i] != NULL; i++)
-			free(argv[i]);
-		free(argv);
+		st = ex_env_handler(argv, command);
+		if (st == 0)
+			execut_command(argv);
+		if (command)
+		{
+			free(command);
+			for (i = 0; argv[i] != NULL; i++)
+				free(argv[i]);
+			free(argv);
+		}
 	}
 	free(command);
 	for (i = 0; argv[i] != NULL; i++)
