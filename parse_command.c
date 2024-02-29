@@ -19,7 +19,7 @@ char **parse_command(char *cmnd)
 		return (NULL);
 	/*if we need the length of argument*/
 	cmnd_cpy = _strdub(cmnd);/*need to be free*/
-	token = strtok(cmnd_cpy, delim);
+	token = _strtok(cmnd_cpy, delim);
 	while (token != NULL)
 	{
 		token = _strtok(NULL, delim);
@@ -32,12 +32,12 @@ char **parse_command(char *cmnd)
 		perror("malloc");
 		exit(0);
 	}
-	token = strtok(cmnd, delim);
+	token = _strtok(cmnd, delim);
 	while (token != NULL)
 	{
 		argv[i] = malloc(sizeof(char) * _strlen(token));
 		_strcpy(argv[i], token);
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		i++;
 	}
 	argv[i] = NULL;

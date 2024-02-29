@@ -16,7 +16,7 @@ char *get_path(char *cmnd)
 	if (path_env)
 	{
 		path_cpy = _strdub(path_env); /*need to free*/
-		token_dir = strtok(path_cpy, ":");
+		token_dir = _strtok(path_cpy, ":");
 		len_cmnd = _strlen(cmnd);
 		while (token_dir)
 		{
@@ -35,7 +35,7 @@ char *get_path(char *cmnd)
 			else
 			{
 				free(path);
-				token_dir = strtok(NULL, ":");
+				token_dir = _strtok(NULL, ":");
 			}
 		}
 		free(path_cpy);
