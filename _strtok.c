@@ -7,7 +7,7 @@
  * Return: char *
 */
 
-char *_strtok(char *str, char *delimiters)
+char *_strtok(char *str, const char *delimiters)
 {
 	return (strtok(str, delimiters));
 }
