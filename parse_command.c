@@ -17,7 +17,7 @@ char **parse_command(char *cmnd)
 
 	if (cmnd == NULL)
 		return (NULL);
-	/*if we need the length of argument*/
+	/*to get the length of argument*/
 	cmnd_cpy = _strdub(cmnd);/*need to be free*/
 	token = strtok(cmnd_cpy, delim);
 	while (token != NULL)
