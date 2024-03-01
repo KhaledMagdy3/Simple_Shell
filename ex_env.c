@@ -9,6 +9,8 @@
 
 int ex_env_handler(char **argv, char *command)
 {
+	if (*argv == NULL || command == NULL)
+		return (0);
 	if (_strcmp(argv[0], "env") == 0)
 	{
 		get_env();

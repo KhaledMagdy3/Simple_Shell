@@ -35,7 +35,7 @@ char **parse_command(char *cmnd)
 	token = _strtok(cmnd, delim);
 	while (token != NULL)
 	{
-		argv[i] = malloc(sizeof(char) * _strlen(token));
+		argv[i] = malloc(sizeof(char) * (_strlen(token) + 1));
 		_strcpy(argv[i], token);
 		token = _strtok(NULL, delim);
 		i++;

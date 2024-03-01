@@ -9,7 +9,7 @@ void execut_command(char **argv)
 	char *command = NULL;
 	int status;
 
-	if (argv)
+	if (*argv)
 	{
 		command = get_path(argv[0]);
 		if (command)
