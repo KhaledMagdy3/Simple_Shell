@@ -19,7 +19,7 @@ int main(void)
 		argv = parse_command(command);
 		st = ex_env_handler(argv, command);
 		if (st == 0)
-			execut_command(argv);
+			execut_command(argv, command);
 		if (command)
 		{
 			free(command);
