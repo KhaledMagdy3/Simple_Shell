@@ -2,12 +2,13 @@
 /**
  * execut_command - execut command
  * @argv: command that excuted
+ * @cmnd: cmnd will be freed if command not found
 */
-void execut_command(char **argv)
+void execut_command(char **argv, char *cmnd)
 {
 	pid_t ch_pid;
 	char *command = NULL;
-	int status;
+	int status, i;
 
 	if (*argv)
 	{
@@ -31,11 +32,18 @@ void execut_command(char **argv)
 				}
 			}
 			else
-			{
 				wait(NULL);
-			}
+		}
+		else
+		{
+			fprintf(stderr, "./hsh: 1: %s: not found\n", argv[0]);
+			free(command);
+			free(cmnd);
+			for (i = 0; argv[i] != NULL; i++)
+				free(argv[i]);
+			free(argv);
+			exit(127);
 		}
 		free(command);
-		/*perror(command);*/
 	}
 }

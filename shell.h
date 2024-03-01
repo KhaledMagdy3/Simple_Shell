@@ -26,7 +26,7 @@ char **parse_command(char *cmnd);
 int ex_env_handler(char **argv, char *command);
 void get_env(void);
 void exit_shell(char **argv, char *line);
-void execut_command(char **argv);
+void execut_command(char **argv, char *cmnd);
 char *_getenv(const char *name);
 char *get_path(char *cmnd);
 
